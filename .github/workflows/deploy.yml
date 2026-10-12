@@ -5,6 +5,12 @@
 
 name: Deploy to GitHub Pages
 
+# === Quyền của GITHUB_TOKEN ===
+# Bắt buộc phải có: mặc định token chỉ có quyền READ, nên bước push
+# lên nhánh gh-pages sẽ bị lỗi 403 "Permission denied to github-actions[bot]".
+permissions:
+  contents: write
+
 # === Khi nào pipeline chạy? ===
 on:
   push:
