@@ -1,12 +1,3 @@
-# Lab 1 — BƯỚC 4: So sánh DevOps vs Truyền thống
-
-> **Sinh viên:** La Văn Hiền (`hienvanla5`)
-> **Repo:** https://github.com/hienvanla5/devops-lab1-portfolio
-> **Website live:** https://hienvanla5.github.io/devops-lab1-portfolio/
-> **Bài:** Lab 1 — Tổng quan về Vận hành & Bảo trì Phần mềm
-
----
-
 ## 4.1 Bảng so sánh: Thủ công (Traditional) vs DevOps (CI/CD Pipeline)
 
 | Tiêu chí | Cách THỦ CÔNG (Traditional) | Cách DEVOPS (CI/CD Pipeline) |
@@ -187,57 +178,3 @@ git push --force origin main   # BẮT BUỘC force vì đã viết lại lịch
 3. **Dám deploy thường xuyên** — vì deploy rẻ và nhanh, nên có thể sửa nhỏ rồi deploy ngay, thay vì dồn lại thành "big bang release" đầy rủi ro.
 4. **Ai cũng deploy được** — thành viên mới chỉ cần `git push`, không cần biết cấu hình server.
 5. **Tự động hóa là tài sản** — file `deploy.yml` viết **1 lần**, dùng **mãi mãi**.
-
----
-
-## Ghi chú kỹ thuật quan trọng (đính chính tài liệu lab)
-
-### 1. Về lỗi 403 `Permission denied to github-actions[bot]`
-
-Tài liệu lab **không đề cập** nguyên nhân này. Thực tế gặp phải:
-
-```
-remote: Permission to hienvanla5/devops-lab1-portfolio.git denied to github-actions[bot].
-fatal: unable to access 'https://github.com/...': The requested URL returned error: 403
-```
-
-**Nguyên nhân:** GitHub đặt mặc định quyền của `GITHUB_TOKEN` là **read-only** cho repo mới
-(kiểm tra: `gh api repos/<owner>/<repo>/actions/permissions/workflow` →
-`{"default_workflow_permissions":"read"}`). Token chỉ đọc nên **không push được** sang nhánh `gh-pages`.
-
-**Cách sửa:** thêm block này vào đầu `deploy.yml` (khai báo trong workflow sẽ ghi đè mặc định của repo):
-
-```yaml
-permissions:
-  contents: write
-```
-
-### 2. Đính chính ghi chú ở BƯỚC 3.1 của tài liệu
-
-Tài liệu viết: *"nếu muốn trang web thay đổi nội dung, thì mọi update code cần đẩy lên nhánh 'gh-pages' thay vì nhánh 'main'"* — **điều này không đúng với pipeline của lab này.**
-
-Trong lab này, `deploy.yml` được cấu hình `on: push: branches: [main]` và
-`peaceiris/actions-gh-pages` sẽ **tự động sao chép nội dung từ `main` sang `gh-pages`**.
-
-⇒ **Chỉ cần push lên `main`.** Nếu push trực tiếp lên `gh-pages`, bạn sẽ:
-- không kích hoạt được pipeline (vì trigger chỉ nghe nhánh `main`), và
-- làm nội dung `gh-pages` lệch khỏi `main`, lần deploy sau sẽ bị ghi đè mất.
-
-### 3. Lưu ý về PowerShell khi chạy `git push`
-
-Trên Windows PowerShell, lệnh `git push` có thể hiện **chữ đỏ** kèm `NativeCommandError`
-dù **thực tế thành công**. Nguyên nhân: Git ghi tiến trình ra `stderr`, PowerShell bắt
-stderr của lệnh ngoài và bọc thành lỗi.
-
-**Cách phân biệt lỗi thật:** lỗi thật luôn có dòng `fatal:` hoặc `! [rejected]`.
-Nếu chỉ có `NativeCommandError` mà không có `fatal:` → **không phải lỗi**.
-
----
-
-## Checklist tiêu chí chấm điểm bước 4
-
-- [x] **4.1** Đã điền bảng so sánh đầy đủ 6 tiêu chí + 5 tiêu chí mở rộng
-- [x] **4.2** Đã vẽ sơ đồ DevOps workflow (6 giai đoạn + sơ đồ so sánh 2 luồng)
-- [x] **4.3** Đã trả lời đầy đủ 3 câu hỏi, có số liệu thực tế từ lab
-- [x] Ảnh `screenshots/06-comparison-table.png` — bảng so sánh
-- [x] Ảnh `screenshots/07-devops-workflow.png` — sơ đồ workflow
