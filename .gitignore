@@ -1,0 +1,3 @@
+# === Lighthouse CI artifacts (kết quả audit, không cần commit) ===
+.lighthouseci/
+.lhci-local/

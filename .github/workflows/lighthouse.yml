@@ -1,0 +1,49 @@
+# ============================================================
+# DevOps Lab 1 — Lighthouse CI (LHCI)
+# Tự động audit chất lượng website mỗi khi push code:
+#   Performance / Accessibility / Best Practices / SEO
+# ============================================================
+
+name: Lighthouse CI
+
+# LHCI chỉ cần đọc code để chạy audit, không ghi gì lên repo.
+permissions:
+  contents: read
+
+# === Khi nào pipeline chạy? ===
+on:
+  push:
+    branches: [main]        # Chạy khi push lên nhánh main
+  pull_request:
+    branches: [main]        # Chạy khi có Pull Request vào main
+  workflow_dispatch:        # Cho phép chạy thủ công từ GitHub UI
+
+# === Các job trong pipeline ===
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest   # Chạy trên máy ảo Ubuntu (free)
+
+    steps:
+      # Step 1: Checkout code từ GitHub
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Cài Node.js — LHCI là công cụ Node nên cần môi trường này
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Step 3: Chạy Lighthouse CI
+      # `lhci autorun` đọc cấu hình trong lighthouserc.json:
+      #   - collect: tự dựng static server và audit MỌI file .html trong repo
+      #   - assert : so điểm từng hạng mục với ngưỡng (0.9) rồi PASS/FAIL
+      #   - upload : đẩy report lên temporary public storage để xem bằng browser
+      - name: Run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.15.1
+          lhci autorun
+        env:
+          # TUỲ CHỌN: nếu có secret này, LHCI sẽ đăng kết quả lên
+          # GitHub status check / Pull Request. Không có vẫn chạy bình thường.
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
