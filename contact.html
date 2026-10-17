@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liên hệ — DevOps Lab 1 Portfolio</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 24px 16px;
+        color: #333;
+      }
+      .container {
+        background: white;
+        border-radius: 16px;
+        padding: 48px;
+        max-width: 600px;
+        margin: auto;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+      h1 {
+        color: #667eea;
+        margin-bottom: 8px;
+        font-size: 32px;
+      }
+      h2 {
+        color: #764ba2;
+        margin-bottom: 24px;
+        font-size: 18px;
+        font-weight: normal;
+      }
+      .nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 28px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e2e8f0;
+      }
+      .nav a {
+        color: #667eea;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 8px 16px;
+        border-radius: 20px;
+        transition: background 0.2s, color 0.2s;
+      }
+      .nav a:hover {
+        background: #eef1fd;
+      }
+      .nav a.active {
+        background: #667eea;
+        color: white;
+      }
+      .info {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 16px 0;
+        text-align: left;
+      }
+      .info p {
+        margin: 8px 0;
+      }
+      .info ul {
+        margin: 8px 0 8px 20px;
+      }
+      .info li {
+        margin: 6px 0;
+      }
+      .info a {
+        color: #667eea;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .info a:hover {
+        text-decoration: underline;
+      }
+      .badge {
+        display: inline-block;
+        background: #667eea;
+        color: white;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 14px;
+        margin: 4px;
+      }
+      .btn {
+        display: inline-block;
+        background: #667eea;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
+        margin-top: 8px;
+        transition: background 0.2s;
+      }
+      .btn:hover {
+        background: #5568d3;
+      }
+      code {
+        background: #eef1fd;
+        color: #5a4b9c;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 13px;
+      }
+      .footer {
+        margin-top: 24px;
+        font-size: 13px;
+        color: #999;
+      }
+      .status {
+        color: #38a169;
+        font-weight: bold;
+      }
+      .portfolio-image {
+        display: block;
+        width: 100%;
+        max-width: 260px;
+        height: auto;
+        margin: 0 auto 24px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.25);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html">Trang chủ</a>
+        <a href="about.html">Giới thiệu</a>
+        <a href="contact.html" class="active" aria-current="page">Liên hệ</a>
+      </nav>
+
+      <h1>Liên hệ</h1>
+      <h2>Kết nối với mình qua các kênh dưới đây</h2>
+
+      <div class="info">
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:hienvla05@gmail.com">hienvla05@gmail.com</a>
+        </p>
+        <p>
+          <strong>GitHub:</strong>
+          <a href="https://github.com/hienvanla5" target="_blank" rel="noopener">github.com/hienvanla5</a>
+        </p>
+        <p>
+          <strong>Repository của lab:</strong>
+          <a
+            href="https://github.com/hienvanla5/devops-lab1-portfolio"
+            target="_blank"
+            rel="noopener"
+            >devops-lab1-portfolio</a
+          >
+        </p>
+        <p>
+          <strong>Website đang chạy:</strong>
+          <a
+            href="https://hienvanla5.github.io/devops-lab1-portfolio/"
+            target="_blank"
+            rel="noopener"
+            >hienvanla5.github.io/devops-lab1-portfolio</a
+          >
+        </p>
+      </div>
+
+      <a class="btn" href="mailto:hienvla05@gmail.com">Gửi email cho mình</a>
+
+      <div class="info">
+        <p><strong>Vì sao trang này không có form liên hệ?</strong></p>
+        <ul>
+          <li>GitHub Pages chỉ phục vụ file tĩnh (HTML/CSS/JS), không có server để xử lý dữ liệu gửi lên.</li>
+          <li>Một form thật cần backend hoặc dịch vụ bên thứ ba (Formspree, Google Forms, Netlify Forms…).</li>
+          <li>Nếu thêm backend, đó sẽ là nội dung của lab sau: deploy cả frontend lẫn backend.</li>
+        </ul>
+      </div>
+
+      <div class="footer">
+        <p>Trang tĩnh — deploy tự động qua GitHub Actions</p>
+        <p>Mọi phản hồi mình sẽ trả lời qua email</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giới thiệu — DevOps Lab 1 Portfolio</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 24px 16px;
+        color: #333;
+      }
+      .container {
+        background: white;
+        border-radius: 16px;
+        padding: 48px;
+        max-width: 600px;
+        margin: auto;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+      h1 {
+        color: #667eea;
+        margin-bottom: 8px;
+        font-size: 32px;
+      }
+      h2 {
+        color: #764ba2;
+        margin-bottom: 24px;
+        font-size: 18px;
+        font-weight: normal;
+      }
+      .nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 28px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e2e8f0;
+      }
+      .nav a {
+        color: #667eea;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 8px 16px;
+        border-radius: 20px;
+        transition: background 0.2s, color 0.2s;
+      }
+      .nav a:hover {
+        background: #eef1fd;
+      }
+      .nav a.active {
+        background: #667eea;
+        color: white;
+      }
+      .info {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 16px 0;
+        text-align: left;
+      }
+      .info p {
+        margin: 8px 0;
+      }
+      .info ul {
+        margin: 8px 0 8px 20px;
+      }
+      .info li {
+        margin: 6px 0;
+      }
+      .info a {
+        color: #667eea;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .info a:hover {
+        text-decoration: underline;
+      }
+      .badge {
+        display: inline-block;
+        background: #667eea;
+        color: white;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 14px;
+        margin: 4px;
+      }
+      .btn {
+        display: inline-block;
+        background: #667eea;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
+        margin-top: 8px;
+        transition: background 0.2s;
+      }
+      .btn:hover {
+        background: #5568d3;
+      }
+      code {
+        background: #eef1fd;
+        color: #5a4b9c;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 13px;
+      }
+      .footer {
+        margin-top: 24px;
+        font-size: 13px;
+        color: #999;
+      }
+      .status {
+        color: #38a169;
+        font-weight: bold;
+      }
+      .portfolio-image {
+        display: block;
+        width: 100%;
+        max-width: 260px;
+        height: auto;
+        margin: 0 auto 24px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.25);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html">Trang chủ</a>
+        <a href="about.html" class="active" aria-current="page">Giới thiệu</a>
+        <a href="contact.html">Liên hệ</a>
+      </nav>
+
+      <h1>Giới thiệu</h1>
+      <h2>Hành trình học DevOps của mình qua Lab 1</h2>
+
+      <div class="info">
+        <p><strong>Họ và tên:</strong> La Văn Hiến</p>
+        <p><strong>Lớp:</strong> KTPM K22B</p>
+        <p><strong>Môn học:</strong> DevOps — Lab 1: Tổng quan &amp; CI/CD đầu tiên</p>
+        <p>
+          <strong>GitHub:</strong>
+          <a href="https://github.com/hienvanla5" target="_blank" rel="noopener">@hienvanla5</a>
+        </p>
+      </div>
+
+      <div class="info">
+        <p><strong>Mục tiêu của Lab 1</strong></p>
+        <ul>
+          <li>Hiểu vòng đời DevOps: Plan → Code → Build → Test → Release → Deploy → Operate → Monitor</li>
+          <li>Tự tay viết website tĩnh đầu tiên (<code>index.html</code>) và đưa lên GitHub</li>
+          <li>Viết pipeline GitHub Actions để tự động deploy lên GitHub Pages</li>
+          <li>So sánh quy trình deploy thủ công với quy trình CI/CD</li>
+        </ul>
+      </div>
+
+      <div class="info">
+        <p><strong>Kết quả đạt được</strong></p>
+        <ul>
+          <li>Website portfolio online miễn phí trên GitHub Pages</li>
+          <li>Mỗi lần <code>git push</code> lên nhánh <code>main</code>, pipeline tự build và deploy trong khoảng 9 giây</li>
+          <li>Tìm và sửa được lỗi <code>403 Permission denied</code> bằng cách thêm <code>permissions: contents: write</code> vào <code>deploy.yml</code></li>
+          <li>Hoàn thành báo cáo so sánh DevOps với cách deploy truyền thống</li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="badge">HTML5</span>
+        <span class="badge">CSS3</span>
+        <span class="badge">Git</span>
+        <span class="badge">GitHub Actions</span>
+        <span class="badge">GitHub Pages</span>
+        <span class="badge">YAML</span>
+        <span class="badge">CI/CD</span>
+      </div>
+
+      <div class="footer">
+        <p>Trang này cũng được deploy tự động bởi cùng một pipeline</p>
+        <p>Push code → CI Build → Auto Deploy → Live!</p>
+      </div>
+    </div>
+  </body>
+</html>
